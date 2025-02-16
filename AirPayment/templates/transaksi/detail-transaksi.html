@@ -1,6 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    
+    <div class="container pt-4 mt-5 d-flex justify-content-center">
+        <div class="card w-75">
+            <div class="card-header bg-primary text-white">
+                Detail Transaksi
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="card-title">ID Transaksi: #{{ pembayaran.nomor_pembayaran }}</h5>
+                        <p class="card-text"><strong>Tanggal:</strong> {{ pembayaran.tanggal_pembayaran }}</p>
+                        <p class="card-text"><strong>Pelanggan:</strong> {{ pembayaran.pelanggan }} </p>
+                        <p class="card-text"><strong>Nomor Telepon:</strong> {{ pembayaran.nomor_hp_pelanggan }}</p>
+                    </div>
+                    <div class="col-md-6 d-flex flex-column justify-content-end">
+                        <p class="card-text"><strong>Alamat:</strong> {{ pembayaran.alamat }} </p>
+                        <p class="card-text"><strong>Keterangan:</strong> {{ pembayaran.keterangan }} </p>
+                        <p class="card-text"><strong>Kasir:</strong> {{ pembayaran.kasir }} </p>
+                    </div>
+                </div>
+                <table class="table table-bordered mt-3">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Bulan</th>
+                            <th>Periode</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ pembayaran.bulan }}</td>
+                            <td>{{ pembayaran.periode }}</td>
+                            <td>Rp {{ pembayaran.jumlah }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-end">
+                    <a href="{% url 'pembayaran-list' %}" class="btn btn-primary">Kembali</a>
+                </div>
+            </div>
+        </div>
+    </div>
     
 {% endblock %}

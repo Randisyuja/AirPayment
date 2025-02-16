@@ -32,6 +32,24 @@ class Pembayaran(models.Model):
         verbose_name=_("Metode Pembayaran")
     )
     keterangan = models.TextField(blank=True, null=True, verbose_name=_("Keterangan"))
+    nomor_hp_pelanggan = models.CharField(
+        max_length=50,
+        null=False,
+        blank=False,
+        verbose_name=_("Nomor HP Pelanggan"),
+    )
+    alamat = models.CharField(
+        max_length=255,
+        null=False,
+        blank=False,
+        verbose_name=_("Alamat"),
+    )
+    kasir = models.CharField(
+        max_length=30,
+        blank=False,
+        null=False,
+        verbose_name=_("Kasir")
+    )
 
     class Meta:
         verbose_name = _("Pembayaran")
@@ -45,4 +63,5 @@ class Pembayaran(models.Model):
         if not self.nomor_pembayaran:
             unique_id = int(str(uuid.uuid4().int)[:10])  # Ambil 6 karakter pertama dari UUID dengan tipe data integer
             self.nomor_pembayaran = f"AB{unique_id}"
+
         super().save(*args, **kwargs)
